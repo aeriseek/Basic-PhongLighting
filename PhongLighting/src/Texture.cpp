@@ -1,9 +1,10 @@
 ﻿#include "Texture.h"
 #include <stdexcept>
+#include <iostream>
 
 
 Texture::Texture(const char* imagePath, const char* type, GLuint slot) : type(type) {
-	stbi_set_flip_vertically_on_load(true);
+	stbi_set_flip_vertically_on_load(false);
 	int width, height, colCh;
 	unsigned char* bytes = stbi_load(imagePath, &width, &height, &colCh, 0);
 
@@ -13,8 +14,8 @@ Texture::Texture(const char* imagePath, const char* type, GLuint slot) : type(ty
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 	glBindTexture(GL_TEXTURE_2D, ID);
 	if (colCh == 4)
@@ -29,7 +30,10 @@ Texture::Texture(const char* imagePath, const char* type, GLuint slot) : type(ty
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RED, GL_UNSIGNED_BYTE, bytes);
 	}
-	else throw std::invalid_argument("texture type wrong");
+	else {
+		std::cout << "cant find " << imagePath << std::endl;
+		throw std::invalid_argument("texture type wrong");
+	}
 
 	glGenerateMipmap(GL_TEXTURE_2D);
 	stbi_image_free(bytes);

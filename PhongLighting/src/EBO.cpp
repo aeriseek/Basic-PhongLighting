@@ -23,5 +23,5 @@ void EBO::Unbind()
 
 void EBO::Delete()
 {
-	glDeleteVertexArrays(1, &ID);
+	glDeleteBuffers(1, &ID);
 }

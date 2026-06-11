@@ -82,7 +82,7 @@ void Model::traverseNode(unsigned int nextNode, glm::mat4 matrix)
 			matValues[i] = (node["matrix"][i]);
 		matrix = glm::make_mat4(matValues);
 	}
-
+	
 	glm::mat4 trans = glm::mat4(1.0f);
 	glm::mat4 rot = glm::mat4(1.0f);
 	glm::mat4 sca = glm::mat4(1.0f);
@@ -120,7 +120,7 @@ std::vector<unsigned char> Model::getData()
 
 	std::string fileStr = std::string(file);
 	std::string fileDir = fileStr.substr(0, fileStr.find_last_of('/') + 1);
-	bytesText = getFileContents((fileDir + uri).c_str());
+	bytesText = getFileContent((fileDir + uri).c_str());
 
 	std::vector<unsigned char> data(bytesText.begin(), bytesText.end());
 	return data;
@@ -131,7 +131,7 @@ std::vector<float> Model::getFloats(json accessor)
 {
 	std::vector<float> floatVec;
 
-	unsigned int buffViewInd = accessor.value("bufferView", 1);
+	unsigned int buffViewInd = accessor.value("bufferView", 0);
 	unsigned int count = accessor["count"];
 	unsigned int accByteOffset = accessor.value("byteOffset", 0);
 	std::string type = accessor["type"];
@@ -163,13 +163,13 @@ std::vector<GLuint> Model::getIndices(json accessor)
 {
 	std::vector<GLuint> indVec;
 
-	unsigned int buffViewInd = accessor.value("bufferView", 0);
-	unsigned int count = accessor["count"];
+	unsigned int buffViewInd = accessor["bufferView"];
+	unsigned int count = accessor.value("count", 0);
 	unsigned int accByteOffset = accessor.value("byteOffset", 0);
-	GLuint  componentType = accessor["componentType"];
+	GLuint componentType = accessor.value("componentType", 5123);
 
 	json bufferView = JSON["bufferViews"][buffViewInd];
-	unsigned int byteOffset = bufferView["byteOffset"];
+	unsigned int byteOffset = bufferView.value("byteOffset", 0);
 
 
 	unsigned int beginningOfData = byteOffset + accByteOffset;

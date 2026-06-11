@@ -27,7 +27,7 @@ target_sources(PhongLighting PRIVATE
 		Shader.cpp
 		Texture.cpp Mesh.cpp Model.cpp
 		Camera.cpp
-)
+		stb_image.cpp)
 
 
 target_include_directories(PhongLighting PRIVATE
@@ -37,8 +37,8 @@ target_include_directories(PhongLighting PRIVATE
 target_link_libraries(PhongLighting PRIVATE glfw GLAD OpenGL::GL nlohmann_json::nlohmann_json)
 
 
-add_custom_command(TARGET Proj POST_BUILD
+add_custom_command(TARGET PhongLighting POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_CURRENT_SOURCE_DIR}/resources"
-        "$<TARGET_FILE_DIR:Proj>/resources"
+        "${CMAKE_CURRENT_SOURCE_DIR}/../resources"
+        "$<TARGET_FILE_DIR:PhongLighting>/resources"
 )
