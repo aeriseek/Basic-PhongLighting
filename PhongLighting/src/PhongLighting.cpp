@@ -30,11 +30,8 @@ int main()
 
 	while (!glfwWindowShouldClose(win))
 	{
-
-
-
-
 		glfwPollEvents();
+		glfwSwapBuffers(win);
 	}
 
 	return 0;

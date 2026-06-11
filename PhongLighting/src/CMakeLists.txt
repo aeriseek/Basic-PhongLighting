@@ -12,8 +12,12 @@ target_link_libraries(GLAD PUBLIC ${OPENGL_LIBRARIES})
 
 
 target_sources(PhongLighting PRIVATE 
-		PhongLighting.cpp)
+		PhongLighting.cpp 
+		VBO.cpp VAO.cpp EBO.cpp)
+
+
 target_include_directories(PhongLighting PRIVATE
 		../inc
+		../headers
 	)
 target_link_libraries(PhongLighting PRIVATE glfw GLAD OpenGL::GL)
