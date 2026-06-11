@@ -35,6 +35,9 @@ The engine features a **custom glTF 2.0 asset loader** and implements the classi
 <p align="center">
   <img src="screenshots/exampleCandle.gif" width="300" alt="Game Demo">
 </p>
+<p align="center">
+  <img src="screenshots/exampleBook.gif" width="300" alt="Game Demo">
+</p>
 ---
 
 ## ⚙️ Build Instructions
