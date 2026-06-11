@@ -30,15 +30,17 @@ The engine features a **custom glTF 2.0 asset loader** and implements the classi
 * 🛠️ **GPU Resource Management:** Clean abstraction layers over OpenGL objects (VAO, VBO, EBO, and Shader Programs) enforcing RAII principles.
 
 ---
+
 ## 🎮 Visuals & Demos
 
-<p align="center">
-  <img src="screenshots/exampleCandle.gif" width="300" alt="Game Demo">
-</p>
-<p align="center">
-  <img src="screenshots/exampleBook.gif" width="300" alt="Game Demo">
-</p>
+<div align="center">
+  <img src="screenshots/exampleCandle.gif" width="300" alt="Example 1">
+  <img src="screenshots/exampleBook.gif" width="300" alt="Example 2">
+</div>
+
+
 ---
+
 
 ## ⚙️ Build Instructions
 
