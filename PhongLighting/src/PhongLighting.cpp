@@ -36,7 +36,7 @@ int main()
 
 	Camera cam(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 
-	Model model("resources/models/candle/scene.gltf");
+	Model model("resources/models/book/scene.gltf");
 
 	glm::mat4 modelMatrix = glm::mat4(1.0f);
 	modelMatrix = glm::scale(modelMatrix, glm::vec3(0.1f, 0.1f, 0.1f));
