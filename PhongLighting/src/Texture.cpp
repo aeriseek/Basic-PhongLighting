@@ -37,7 +37,12 @@ Texture::Texture(const char* imagePath, const char* type, GLuint slot) : type(ty
 }
 
 
-
+void Texture::TexUnit(Shader& shader, const char* uniform, GLuint unit)
+{
+	GLuint tex0Uni = glGetUniformLocation(shader.ID, uniform);
+	shader.Activate();
+	glUniform1i(tex0Uni, unit);
+}
 
 void Texture::Bind()
 {
