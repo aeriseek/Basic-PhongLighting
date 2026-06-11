@@ -15,7 +15,9 @@ target_sources(PhongLighting PRIVATE
 		PhongLighting.cpp 
 		VBO.cpp VAO.cpp EBO.cpp 
 		Shader.cpp
-		Texture.cpp)
+		Texture.cpp Mesh.cpp
+		Camera.cpp
+)
 
 
 target_include_directories(PhongLighting PRIVATE
