@@ -14,7 +14,8 @@ target_link_libraries(GLAD PUBLIC ${OPENGL_LIBRARIES})
 target_sources(PhongLighting PRIVATE 
 		PhongLighting.cpp 
 		VBO.cpp VAO.cpp EBO.cpp 
-		Shader.cpp)
+		Shader.cpp
+		Texture.cpp)
 
 
 target_include_directories(PhongLighting PRIVATE
