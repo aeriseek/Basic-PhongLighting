@@ -35,3 +35,10 @@ target_include_directories(PhongLighting PRIVATE
 		../headers
 	)
 target_link_libraries(PhongLighting PRIVATE glfw GLAD OpenGL::GL nlohmann_json::nlohmann_json)
+
+
+add_custom_command(TARGET Proj POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_CURRENT_SOURCE_DIR}/resources"
+        "$<TARGET_FILE_DIR:Proj>/resources"
+)
